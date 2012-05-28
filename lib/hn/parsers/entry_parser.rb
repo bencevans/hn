@@ -3,8 +3,19 @@ require "open-uri"
 
 module HackerNews
   class EntryParser
-    def home
-      doc = Nokogiri::HTML(open('spec/fixtures/home.html'))
+    def homepage
+      parse_entries 'http://news.ycombinator.com/'
+    end
+
+    def newest
+      parse_entries 'http://news.ycombinator.com/newest'
+    end
+
+    private
+
+    def parse_entries(url)
+      # doc = Nokogiri::HTML(open('spec/fixtures/home.html'))
+      doc = Nokogiri::HTML(open(url))
       tbody = doc.at_css('td.title').parent.parent
       trs = tbody.css('tr').to_a
 
