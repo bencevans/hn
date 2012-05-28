@@ -1,6 +1,6 @@
 # Hn
 
-TODO: Write a gem description
+A tiny gem to fetch Hacker News entries
 
 ## Installation
 
@@ -12,13 +12,15 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install hn
-
 ## Usage
 
-TODO: Write usage instructions here
+    require 'hn'
+
+    # return 30 homepage entries
+    HackerNews::Engine.homepage
+
+    # return 30 newest entries
+    HackerNews::Engine.newest
 
 ## Contributing
 

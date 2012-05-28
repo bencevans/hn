@@ -1,12 +1,13 @@
 # -*- encoding: utf-8 -*-
 require File.expand_path('../lib/hn/version', __FILE__)
+require File.expand_path('../lib/hn/common', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Forrest Ye"]
   gem.email         = ["afu@forresty.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = HackerNews::DESCRIPTION
+  gem.summary       = HackerNews::DESCRIPTION
+  gem.homepage      = "https://github.com/forresty/hn"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
