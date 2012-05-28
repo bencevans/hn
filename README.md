@@ -2,6 +2,8 @@
 
 A tiny gem to fetch Hacker News entries
 
+![hn gem](http://forresty.com/images/hn.png)
+
 ## Installation
 
 Add this line to your application's Gemfile:
