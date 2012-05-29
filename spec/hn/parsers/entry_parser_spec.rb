@@ -17,13 +17,14 @@ module HackerNews
         entries.first.should be_an Entry
         entries.each do |entry|
           entry.id.should > 4000000
-          entry.username.should =~ /\w+/
+          entry.username.should =~ /\w+/ unless entry.username.nil?
           entry.link.should =~ /^http/ unless entry.site.nil?
           entry.title.should_not be_empty
-          entry.num_comments.should > 0
+          entry.num_comments.should_not == 0
           entry.site.should_not =~ /^http/
-          entry.points.should > 0
-          Chronic.parse(entry.time_string).should < Time.now
+          entry.points.should_not == 0
+
+          Chronic.parse(entry.time_string).should < Time.now unless entry.time_string.nil?
         end
       end
     end
