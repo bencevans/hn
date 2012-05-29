@@ -3,9 +3,12 @@ SimpleCov.start do
   add_filter 'spec'
 end
 
-require "open-uri"
 require 'hn'
 
-def fixture(filename)
-  open("spec/fixtures/#{filename}") { |file| file.read }
+require "fakeweb"
+FakeWeb.allow_net_connect = false
+
+require "open-uri"
+def fixture(fixture_name)
+  open("spec/fixtures/#{fixture_name}") { |p| p.read }
 end

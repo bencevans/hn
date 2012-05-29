@@ -1,6 +1,9 @@
 require "spec_helper"
 require "chronic"
 
+FakeWeb.register_uri :get, 'http://news.ycombinator.com/', :body => fixture('home.html')
+FakeWeb.register_uri :get, 'http://news.ycombinator.com/newest', :body => fixture('newest.html')
+
 module HackerNews
   describe EntryParser do
     subject { EntryParser.new }
@@ -9,13 +12,12 @@ module HackerNews
 
     context "homepage" do
       it "should parse them right" do
-        parser.stub(:open).and_return(open('spec/fixtures/home.html'))
         entries = parser.homepage
         entries.count.should == 30
         entries.first.should be_an Entry
         entries.each do |entry|
           entry.id.should > 4000000
-          entry.user.should =~ /\w+/
+          entry.username.should =~ /\w+/
           entry.link.should =~ /^http/ unless entry.site.nil?
           entry.title.should_not be_empty
           entry.num_comments.should > 0
@@ -28,14 +30,18 @@ module HackerNews
 
     context "newest" do
       it "should parse them right" do
-        parser.stub(:open).and_return(open('spec/fixtures/newest.html'))
         entries = parser.newest
         entries.count.should == 30
         entries.first.should be_an Entry
         entries.each do |entry|
           entry.id.should > 4000000
-          entry.user.should =~ /\w+/
-          entry.link.should =~ /^http/ unless entry.site.nil?
+          entry.username.should =~ /\w+/
+          entry.link.should =~ /^http/
+
+          if entry.site.nil? # ASK HN
+            entry.id.should == entry.link.match(/^http:\/\/news\.ycombinator\.com\/item\?id=(\d+)$/)[1].to_i
+          end
+
           entry.title.should_not be_empty
           entry.num_comments.should >= 0
           entry.site.should_not =~ /^http/
