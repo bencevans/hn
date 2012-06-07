@@ -1,5 +1,6 @@
 require "nokogiri"
 require "open-uri"
+require "chronic"
 
 module HackerNews
   class EntryParser
@@ -34,6 +35,7 @@ module HackerNews
           entry.points = trs[i*3+1].at_css('td.subtext span').text.to_i rescue -1
           entry.username = trs[i*3+1].at_css('td.subtext a').text rescue nil
           entry.time_string = trs[i*3+1].at_css('td.subtext a').next.text.sub('|', '').strip rescue nil
+          entry.submitted_at = Chronic.parse entry.time_string
           entry.num_comments = trs[i*3+1].css('td.subtext a')[1].text.to_i rescue -1
 
           begin

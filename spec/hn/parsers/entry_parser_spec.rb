@@ -24,7 +24,7 @@ module HackerNews
           entry.site.should_not =~ /^http/
           entry.points.should_not == 0
 
-          Chronic.parse(entry.time_string).should < Time.now unless entry.time_string.nil?
+          entry.submitted_at.should < Time.now unless entry.time_string.nil?
         end
       end
     end
@@ -47,7 +47,7 @@ module HackerNews
           entry.num_comments.should >= 0
           entry.site.should_not =~ /^http/
           entry.points.should >= 0
-          Chronic.parse(entry.time_string).should < Time.now
+          entry.submitted_at.should < Time.now
         end
       end
     end
