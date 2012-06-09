@@ -1,5 +1,7 @@
 require "hn/version"
 require "hn/common"
 require "hn/models/entry"
+require "hn/models/comment"
 require "hn/parsers/entry_parser"
+require "hn/parsers/comment_parser"
 require "hn/engine"
