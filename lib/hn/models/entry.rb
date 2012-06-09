@@ -4,7 +4,6 @@ module HackerNews
 
     def initialize
       yield self if block_given?
-      self
     end
   end
 end

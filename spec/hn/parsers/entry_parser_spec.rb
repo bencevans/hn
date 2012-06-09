@@ -1,5 +1,4 @@
 require "spec_helper"
-require "chronic"
 
 FakeWeb.register_uri :get, 'http://news.ycombinator.com/', :body => fixture('home.html')
 FakeWeb.register_uri :get, 'http://news.ycombinator.com/newest', :body => fixture('newest.html')
