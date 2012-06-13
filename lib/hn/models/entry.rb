@@ -5,5 +5,9 @@ module HackerNews
     def initialize
       yield self if block_given?
     end
+
+    def [](attribute)
+      instance_variable_get("@#{attribute.to_s}")
+    end
   end
 end
