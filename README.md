@@ -2,6 +2,8 @@
 
 A tiny gem to fetch Hacker News entries
 
+[![Build Status](https://secure.travis-ci.org/forresty/hn.png?branch=master)](http://travis-ci.org/forresty/hn)
+
 ![hn gem](http://forresty.com/images/hn.png)
 
 ## Installation
@@ -18,10 +20,10 @@ And then execute:
 
     require 'hn'
 
-    # return 30 homepage entries
+    # return up to 30 homepage entries
     HackerNews::Engine.homepage
 
-    # return 30 newest entries
+    # return up to 30 newest entries
     HackerNews::Engine.newest
 
 ## Contributing
