@@ -38,10 +38,10 @@ module HackerNews
 
         entry.title = trs[i*3].at_css('td.title a').text
 
-        entry.site = trs[i*3].at_css('td.title span.comhead').text.match(/\((.+)\)/)[1] rescue nil
+        entry.site = trs[i*3].at_css('td.title span.comhead').text.match(/\((.+)\)/)[1] rescue ''
         entry.points = trs[i*3+1].at_css('td.subtext span').text.to_i rescue -1
-        entry.username = trs[i*3+1].at_css('td.subtext a').text rescue nil
-        entry.time_string = trs[i*3+1].at_css('td.subtext a').next.text.sub('|', '').strip rescue nil
+        entry.username = trs[i*3+1].at_css('td.subtext a').text rescue ''
+        entry.time_string = trs[i*3+1].at_css('td.subtext a').next.text.sub('|', '').strip
         entry.submitted_at = Chronic.parse entry.time_string
         entry.num_comments = trs[i*3+1].css('td.subtext a')[1].text.to_i rescue -1
 

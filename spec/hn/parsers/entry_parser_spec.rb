@@ -12,18 +12,18 @@ module HackerNews
     context "homepage" do
       it "should parse them right" do
         entries = parser.homepage
-        entries.count.should == 29 # 4th should fail since it don't have id
+        entries.count.should <= 30
         entries.first.should be_an Entry
         entries.each do |entry|
           entry.id.should > 4000000
-          entry.username.should =~ /\w+/ unless entry.username.nil?
-          entry.link.should =~ /^http/ unless entry.site.nil?
+          entry.username.should =~ /\w+/
+          entry.link.should =~ /^http/
           entry.title.should_not be_empty
           entry.num_comments.should >= 0
           entry.site.should_not =~ /^http/
           entry.points.should_not == 0
 
-          entry.submitted_at.should < Time.now unless entry.time_string.nil?
+          entry.submitted_at.should < Time.now
         end
       end
     end
