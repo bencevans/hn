@@ -8,6 +8,10 @@ module HackerNews
       parse_entries site_name
     end
 
+    def best
+      parse_entries "#{site_name}best"
+    end
+
     def newest
       parse_entries "#{site_name}newest"
     end

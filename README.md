@@ -23,6 +23,9 @@ And then execute:
     # return up to 30 homepage entries
     HackerNews::Engine.homepage
 
+    # return up to 30 best entries
+    HackerNews::Engine.best
+
     # return up to 30 newest entries
     HackerNews::Engine.newest
 
