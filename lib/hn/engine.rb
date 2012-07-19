@@ -5,6 +5,10 @@ module HackerNews
         EntryParser.new.homepage
       end
 
+      def best
+        EntryParser.new.best
+      end
+
       def newest
         EntryParser.new.newest
       end
