@@ -6,6 +6,10 @@ module HackerNews
     let(:engine) { subject }
     it { should respond_to :homepage }
 
+    it "should fetch homepage items" do
+      engine.homepage.count.should == 30
+    end
+
     it "should fetch best items" do
       engine.best.count.should == 30
     end
