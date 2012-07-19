@@ -37,7 +37,7 @@ And then execute:
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
-## Contributors:
+## Contributors
 
 Thanks following wonderful people for contributing to this project:
 
